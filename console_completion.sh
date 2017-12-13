@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # Symfony2 App/Console autocompletion (commands and arguments only)
 # Copyright (c) 2014, Joshua Thijssen
 # All rights reserved.
@@ -33,13 +31,13 @@
 # Usable for both bash and zsh (probably)
 #
 # Usage:
-#    Load the script (or add to your .bashrc)
+#    Load the script (or bin to your .bashrc)
 #
-#           source ./console_completion.sh
+#
 #
 #    Autocomplete:
 #
-#           ./app/console <TAB>
+#           ./bin/console <TAB>
 #
 #   Will autocomplete both commands and its arguments.
 #
@@ -48,13 +46,13 @@ if [[ -n ${ZSH_VERSION-} ]]; then
     autoload -U +X bashcompinit && bashcompinit
 fi
 
-_complete_sf2_app_console() {
+_complete_sf2_bin_console() {
     local cur
 
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
 
-    # Assume first word is the actual app/console command
+    # Assume first word is the actual bin/console command
     console="${COMP_WORDS[0]}"
 
     if [[ ${COMP_CWORD} == 1 ]] ; then
@@ -70,4 +68,4 @@ _complete_sf2_app_console() {
 }
 
 export COMP_WORDBREAKS="\ \"\\'><=;|&("
-complete -F _complete_sf2_app_console console
+complete -F _complete_sf2_bin_console console
